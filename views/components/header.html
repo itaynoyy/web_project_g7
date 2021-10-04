@@ -1,0 +1,56 @@
+<!-- Navigation -->
+<nav class="nav">
+
+<div class="wrapper container">
+  <div class="logo"><a href="/">
+    <img src="/images/logo-perah.jpg" alt="" style="width: 60%; margin-right: 50%;">
+  </a>
+  </div>
+
+  <ul class="nav-list">
+    <div class="top">
+      <label for="" class="btn close-btn"><i class="fas fa-times"></i></label>
+    </div>
+    <%if(current_user){%>
+    <li><a href="/logout">Disconnect</a></li>
+    <%}else{%>
+    <li><a href="/login">Sign-In/Sign-Up</a></li>
+    <%}%>
+    <li><a href="/classes">Classes</a></li>
+    <li><a href="/customize">Customized</a></li>
+
+    <li>
+      <a href="" class="desktop-item">Events<span><i class="fas fa-chevron-down"></i></span></a>
+      <input type="checkbox" id="showdrop1" />
+      <label for="showdrop1" class="mobile-item">Events<span><i class="fas fa-chevron-down"></i></span></label>
+      <ul class="drop-menu1">
+        <li><a href="/product-type/Table arrangements">Table arrangements <img src="/images/table.png" alt="" /></a></li>
+        <li><a href="/product-type/Bridal bouquet">Bridal bouquet <img src="/images/Bridal_bouquet.jfif" alt="" /></a></li>
+      </ul>
+    </li>
+
+    <li>
+      <a href="" class="desktop-item">Products<span><i class="fas fa-chevron-down"></i></span></a>
+      <input type="checkbox" id="showdrop2" />
+      <label for="showdrop2" class="mobile-item">Products<span><i class="fas fa-chevron-down"></i></span></label>
+      <ul class="drop-menu1">
+              <li><a href="/product-type/Flower pots">Flower pots <img src="/images/flower_pot.png" alt="" /> </a> </li>
+              <li><a href="/product-type/Bouquets">Bouquets <img src="/images/bouquet.png" alt="" /></a></li>
+              <li><a href="/product-type/Flower crowns">Flower crowns <img src="/images/crown.png" alt="" /></a></li>
+      </ul>
+    </li>
+
+    <!-- icons -->
+    <li class="icons">
+      <a href="/cart">
+        <span>
+          <i class="fas fa-shopping-cart fa-2x"></i>
+
+      </span>
+      </a>
+      
+    </li>
+  </ul>
+  <label for="" class="btn open-btn"><i class="fas fa-bars"></i></label>
+</div>
+</nav>

@@ -1,0 +1,49 @@
+<!-- Footer -->
+<footer id="footer" class="section footer">
+<div class="container">
+  <div class="footer-container">
+    <div class="footer-center">
+      <h3>INFORMATION</h3>
+      <a href="/about">About Us</a>
+      <a href="/contact">Contact Us</a>
+    </div>
+    <div class="footer-center">
+      <h3>MY ACCOUNT</h3>
+    <%if(current_user){%>
+      <a href="/account">My Account</a>
+      <a href="/history">Order History</a>
+      <a href="/special-dates">Special dates</a>
+    <%}else{%>
+      <a href="/login">Sign-in/Sign-up</a>
+    <%}%>
+    </div>
+    <div class="footer-center">
+      <h3>CONTACT US</h3>
+      <div>
+        <span>
+          <i class="fas fa-map-marker-alt"></i>
+        </span>
+            Metzada 1, Beersheva
+      </div>
+      <div>
+        <span>
+          <i class="far fa-envelope"></i>
+        </span>
+        perahashchunot@gmail.com
+      </div>
+      <div>
+        <span>
+          <i class="fas fa-phone"></i>
+        </span>
+        08-9563257
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</footer>
+<!-- End Footer -->
+
+<!-- Custom Scripts -->
+<script src="/js/slider.js"></script>
+<script src="/js/index.js"></script>

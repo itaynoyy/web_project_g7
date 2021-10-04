@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- adding meta file -->
+  <%- await include('components/meta.html')%>
+  <title>Perah Hashchunot</title>
+</head>
+
+<body>
+  <!-- adding header file -->
+  <%- await include('components/header.html')%>
+
+<!----------------------------------------------------------------PRODUCTS----------------------------------------------------------------->
+
+ <section class="section products">
+      <div class="col-3-of-4">
+        <div class="header_products"><h1><%=products[0].type%></h1></div>
+        <div class="pot_banner"><img src="/images/flower-pot-banner.jpg" alt="" /></div>
+        <div class="form-products">
+            <div class="gridHead"> <img src="/images/sideFlower.png" alt="" /> </div>
+             <form>
+                <div class="item">
+                    <label for="sort-by">Sort By Price</label>
+                    <select name="range" id="sort-by">
+                      <option value="1" selected="selected">0-150</option>
+                      <option value="2">150-300</option>
+                      <option value="3">300+</option>
+                    </select>
+                  </div>
+                  <button class="button" style="vertical-align:middle"><span>Apply!</span></button>
+                </form>
+            <div class="gridHead2"> <img src="/images/sideFlower.png" alt="" /> </div>
+        </div>
+        
+        <div class="product-layout">
+          <%for (let i = 0; i < products.length; i++){%>
+          <div class="product">
+            <div class="img-container">
+              <img src="/images/<%=products[i].picture%>" alt="" />
+              <div class="addCart">
+                <a href="/cart/add/<%=products[i].id%>?count=1"><i class="fas fa-shopping-cart"></i></a>
+              </div>
+            </div>
+            <div class="bottom">
+              <a href="/product/<%=products[i].id%>"><%=products[i].name%></a>
+              <div class="price">
+                <span><%=products[i].price%>₪</span>
+              </div>
+            </div>
+          </div>
+        <%}%>
+        </div>
+        <!-- PAGINATION -->
+        <ul class="pagination">
+          <%if(page>1){%>
+          <a href="?page=<%=1%>&range=<%=range%>" class="last">« First</a>
+          <a href="?page=<%=page-1%>&range=<%=range%>"><%=page-1%></a>
+          <%}%>
+          <span><%=page%></span>
+          <%if(page < total){%>
+          <a href="?page=<%=page+1%>&range=<%=range%>"><%=page+1%></a>
+          <a href="?page=<%=total%>&range=<%=range%>" class="last">Last »</a>
+          <%}%>
+        </ul>
+      </div>
+    </div>
+  </section>
+      
+  
+
+  <!------------------------------------------------------------------------------------------------------------------------------------->
+  <!-- adding footer file -->
+  <%- await include('components/footer.html')%>
+
+</body>
+
+</html>

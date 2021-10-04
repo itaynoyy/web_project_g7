@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- adding meta file -->
+  <%- await include('components/meta.html')%>
+  <title>Perah Hashchunot</title>
+</head>
+
+<body>
+  <!-- adding header file -->
+  <%- await include('components/header.html')%>
+
+<!---------------------------------------------schedule------------------------------------------------------------------------------------>
+
+<div class="classes-img">
+  <img src="/images/class.jpg" alt="" />
+  </div>
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Calendar</title>
+<link rel="stylesheet" href="/css/homeCSS.css" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+/>
+<link
+  href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
+  rel="stylesheet"
+/>
+
+<div class="sc_new">
+    <div class="calendar">
+      <div class="month">
+        <i class="fas fa-angle-left prev"></i>
+        <div class="date">
+          <h1></h1>
+          <p></p>
+        </div>
+        <i class="fas fa-angle-right next"></i>
+      </div>
+      <%if(typeof error!=="undefined"){%>
+        <script>alert(`<%=error%>`)</script>
+        <%}%>
+      <div class="weekdays" >
+        <div >Sun</div>
+        <div>Mon</div>
+        <div>Tue</div>
+        <div>Wed</div>
+        <div>Thu</div>
+        <div>Fri</div>
+        <div>Sat</div>
+      </div>
+      <div class="days" ></div>
+
+      <form action="/classes">
+        <input type="date" name="date" id="form-dateT" hidden required>
+        <button class="button" style="vertical-align:middle"><span>check</span></button>
+      
+      </form>
+</div>
+
+    <form action="/classes/join">
+      <input type="date" name="date" id="form-date" hidden required>
+      <div class="scheduleh1"><h3>Choose a date:</h3>
+        
+        <br>
+        <%for(let i = 0; i< classes.length; i++){%>
+        <h4><input type="radio" name="id" value="<%=classes[i].id%>" <%if(i==0){%>checked<%}%> /> <%=classes[i].name%> (<%=classes[i].price%>₪):</h4>
+        <p><%=classes[i].lecturer%></p>
+        <%=classes[i].description%> <br><br>
+        <%}%>
+        <button class="button" style="vertical-align:middle"><span>Apply!</span></button>
+      </div>
+    </form>
+
+ 
+  </div>
+
+    
+  
+
+  <!------------------------------------------------------------------------------------------------------------------------------------->
+  <!-- adding footer file -->
+  <%- await include('components/footer.html')%>
+  <script src="/js/scheduler.js"></script>
+
+</body>
+
+</html>

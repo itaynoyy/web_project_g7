@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- adding meta file -->
+  <%- await include('components/meta.html')%>
+  <title>Perah Hashchunot</title>
+</head>
+
+<body>
+  <!-- adding header file -->
+  <%- await include('components/header.html')%>
+
+<!------------------------------------------special-dates-------------------------------------------------------------------------------------->
+
+<div class="special-dates1">
+  <div class="birthday1"  for="birthday"> 
+    <form action="/edit-birthday" method="POST">
+    My Birthday:
+    <input type="date" id="birthday" name="birthday" value="<%=current_user.date_of_birth && current_user.date_of_birth.substr(0,10)%>" required>
+    <button type="submit">edit</button></form>
+    <br>
+    <div class="cont">  
+    <form class="date-1"  for="date 1" action="/special-dates/add" method="POST">Add your special dates: <br><br>
+    <input type="text" id="date-1-name" name="title" placeholder="What is your event?">
+    <input type="date" id="date 1" name="date">
+    <button type="submit" >Create</button>
+    </form>
+    <%for(let i = 0; i< dates.length; i++){%>
+    <form class="date-1"  for="date 1" action="/special-dates/edit/<%=dates[i].id%>" method="POST"><br>
+    <input type="text" id="date-1-name" name="title" placeholder="What is your event?" value="<%=dates[i].title%>">
+    <input type="date" id="date 1" name="date" value="<%=dates[i].date.toISOString().substr(0,10)%>">
+    <button type="submit" >Edit</button>
+    <a href="/special-dates/delete/<%=dates[i].id%>"><button type="button" >Delete</button></a>
+    </form>
+    <%}%>
+    </div>
+
+
+  
+</div>
+
+  <!------------------------------------------------------------------------------------------------------------------------------------->
+    <!-- adding footer file -->
+  <%- await include('components/footer.html')%>
+
+</body>
+
+</html>

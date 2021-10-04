@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- adding meta file -->
+  <%- await include('components/meta.html')%>
+  <title>Perah Hashchunot</title>
+</head>
+
+<body>
+
+  <!-- adding header file -->
+  <%- await include('components/header.html')%>
+    <!--------------------------------------------------------------------------------------------------------------------------------->
+    <!-- Carousel Navigation -->
+    <div class="arrows d-flex">
+        <div class="swiper-prev d-flex">
+            <i class="bx bx-chevrons-left swiper-icon"></i>
+        </div>
+        <div class="swiper-next d-flex">
+            <i class="bx bx-chevrons-right swiper-icon"></i>
+        </div>
+    </div>
+    </div>
+    <!-- Order_History -->
+
+
+    <div class="small-container cart-page">
+        <h1>Order History</h1>
+        <table>
+            <tr>
+                <th>Order Number</th>
+                <th>Order Date</th>
+                <th>Products</th>
+                <th>Subtotal</th>
+            </tr>
+            <%for(let i = 0; i < orders.length; i++){%>
+            <tr>
+                <td><%=orders[i].id%></td>
+                <td><%=orders[i].date.toISOString().substr(0,10)%></td>
+                <td>
+                    <%for(let j=0;j< orders[i].products.length; j++){%>
+                    <p><%=orders[i].products[j].name%></p>
+                    <small>Price: $<%=orders[i].products[j].price%></small>
+                    <%}%>
+                    <%for(let j=0;j< orders[i].customize.length; j++){%>
+                    <p>Custom Bouqeut</p>
+                    <small>Price: $<%=orders[i].customize[j].price%></small>
+                    <%}%>
+    </div>
+    </div>
+    </td>
+    <td>$<%=orders[i].delivery_price%></td>
+    </tr>
+    <%}%>
+            <%for(let i = 0; i < classes.length; i++){%>
+            <tr>
+                <td><%=classes[i].class_id%></td>
+                <td><%=classes[i].date.toISOString().substr(0,10)%></td>
+                <td>        
+                    <p><%=classes[i].name%></p>
+                    <small>Price: $<%=classes[i].price%></small>
+                </td>
+                <td>$<%=classes[i].price%></td>
+            </tr>
+            <%}%>
+    </table>
+
+
+
+
+    <!------------------------------------------------------------------------------------------------------------------------------------->
+
+
+  <!-- adding footer file -->  
+  <%- await  include('components/footer.html') %>
+
+</body>
+
+</html>

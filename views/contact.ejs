@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- adding meta file -->
+  <%- await include('components/meta.html')%>
+  <title>Perah Hashchunot | Contact us</title>
+</head>
+
+<body>
+
+  <!-- adding header file -->
+  <%- await include('components/header.html')%>
+
+<!---------------------------------------------------------------------contact_Us------------------------------------------------------------>
+<div class="contact_Us">
+    
+  <div class="form-box-contactUs">
+      <form  id="Contact Us" method="POST" class="inputContact">
+          <div class="title">
+          <h2>Contact Us!</h2>
+          <%if(typeof message !=="undefined"){%><p><%=message%></p><%}%>
+      </div>
+          <input type="Full Name" class="input-field-contactUs" placeholder="Full Name" name="name" required pattern="[ A-Za-z]{1,50}" title="Enter Valid name">
+          <input type="email" name="email" class="input-field-contactUs" placeholder="email" required>
+          <input type="text" name="phone" class="input-field-contactUs" placeholder="Phone Number" required pattern="[0-9]{3}[0-9]{4}[0-9]{3}" title="Enter Valid phone">
+           <textarea name="message" class="input-field-contactUs" cols="40" rows="5" placeholder="type your Message..." required></textarea><br>
+          <button type="submit" class="submit-button" style="vertical-align:middle"><span>send</span></button>
+      </form>
+  </div>
+</div> 
+
+<!------------------------------------------------------------------------------------------------------------------------------------->
+  <!-- adding footer file -->  
+  <%- await  include('components/footer.html') %>
+
+
+</body>
+
+</html>
+

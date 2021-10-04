@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- adding meta file -->
+  <%- await include('components/meta.html')%>
+  <title>Perah Hashchunot</title>
+</head>
+
+<body>
+  <!-- adding header file -->
+  <%- await include('components/header.html')%>
+
+<!-------------------------------------------------------------personal-details-------------------------------------------------------------------->
+
+  <div class ="personal-details">
+
+    <div class ="extra-details">
+        <!-- <div class="myphoto"></div> -->
+
+        <div class="buttonforsd">
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img id = "userPhoto" src="images/<%=current_user.picture%>" alt="Avatar" style="width:300px;height:300px;">
+              </div>
+              <div class="flip-card-back">
+                <h1><%=current_user.first_name%></h1> <br>
+
+                <div class="row1">
+
+                  <div class="column-usrs">
+                    <img src="images/user.jpg" alt="Snow" onclick="onclickFuncUser()">
+                    <img src="images/user-boy.png" alt="Forest" onclick="onclickFuncBoy()">
+                  </div>
+
+                <div class="row2">
+                  <div class="column-usrs">
+                    <img src="images/user-girl.png" alt="Snow" onclick="onclickFuncGirl()" >
+                    <img src="images/woman-user.png" alt="Forest" onclick="onclickFuncWoman()">
+                  </div>
+
+                </div>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        <label  for="fname"><%=current_user.first_name%><form class="detailspdNZ" method="POST"  for="detailspdNZ">
+          <input type="hidden" name="picture" id="hidden-image" value="<%=current_user.picture%>">
+          <button>Save</button>
+          <input name="action" value="picture" hidden>
+        </form></label><br><br>
+        
+        <button onclick="location.href='/special-dates'" style="border-radius: 10px;"><span>Special Dates</span></button><br>
+       
+        <button onclick="location.href='/history'" style="border-radius: 10px;"><span>Shopping History</span></button><br>
+
+      </div>
+    </div>
+     <div class ="detailspd">
+      
+     
+        
+          <form class="detailspdNZ" method="POST"  for="detailspdNZ"> 
+            <div class= "fname" for="fname">First name: <br>
+            <input type="text" id="First nameNZ" value="<%=current_user.first_name%>" name="first_name"  placeholder="First name" pattern="[ A-Za-z]{3,30}" title="Enter only alphabets">
+            <button type="submit" onclick="">Save</button>
+            </div><br>
+            <input name="action" value="first_name" type="hidden">
+           </form>
+           <form class="detailspdNZ" method="POST"  for="detailspdNZ">
+        <div class="lname">Last name:  <br>       
+           <input type="text" id="Last nameNZ" value="<%=current_user.last_name%>" name="last_name"  placeholder="Last name" pattern="[ A-Za-z]{3,30}" title="Enter only alphabets">
+          <button type="submit" onclick="">Save</button>
+          </div><br>
+            <input name="action" value="last_name" type="hidden">
+           </form>
+           <form class="detailspdNZ" method="POST"  for="detailspdNZ">
+
+        <div class="dob">Date Of Birth:  <br>
+           <input type="date" id="dobNZ" value="<%= current_user.date_of_birth && (current_user.date_of_birth.substr(0,10)) %>" name="date_of_birth"  placeholder="Date Of Birth">
+          <button type="submit" onclick="">Save</button>
+          </div><br>
+            <input name="action" value="date_of_birth" type="hidden">
+           </form>
+           <form class="detailspdNZ" method="POST"  for="detailspdNZ">
+       
+        <div class="emailpd">E-mail:</E-mail>  <br>  
+           <input type="email" value="<%=current_user.email%>" id="E-mailNZ" name="email" placeholder="E-mail">
+          <button type="submit" onclick="">Save</button>
+          </div><br>
+            <input name="action" value="email" type="hidden">
+           </form>
+           <form class="detailspdNZ" method="POST"  for="detailspdNZ">
+
+        <div class="city">City:<br> 
+          <input type="text" value="<%=current_user.address_city%>" id="CityNZ" name="address_city"  placeholder="City" pattern="[ A-Za-z]{3,30}" title="Enter only alphabets">
+          <button type="submit" onclick="">Save</button>
+          </div><br>
+            <input name="action" value="address_city" type="hidden">
+           </form>
+           <form class="detailspdNZ" method="POST"  for="detailspdNZ">
+
+        <div class="street">Street:<br>        
+           <input type="text" value="<%=current_user.address_street%>" id="StreetNZ" name="address_street"  placeholder="Street" pattern="[ A-Za-z]{3,30}" title="Enter only alphabets">
+          <button type="submit" onclick="">Save</button>
+          </div><br>
+            <input name="action" value="address_street" type="hidden">
+           </form>
+           <form class="detailspdNZ" method="POST"  for="detailspdNZ">
+
+        <div class="postal">Zip Code:<br>           
+           <input type="text" value="<%=current_user.address_zipcode%>" id="postalNZ" name="address_zipcode"  placeholder="Zip Code" pattern="[0-9]{1,20}" title="Enter only alphabets">
+          <button type="submit" onclick="">Save</button>
+          </div><br>
+            <input name="action" value="address_zipcode" type="hidden">
+           </form>
+           <form class="detailspdNZ" method="POST"  for="detailspdNZ">
+        <div class="phone">Phone: <br>          
+           <input type="text" value="<%=current_user.address_number%>" id="phoneNZ" name="address_number"  placeholder="Phone" pattern="[0-9]{3}[0-9]{4}[0-9]{3}" title="Enter Valid phone">
+          <button type="submit" onclick="">Save</button>
+          </div><br>
+                   <input name="action" value="address_number" type="hidden">
+
+    </div>
+           </form>
+   <!-- ------------------------------------------------------------------------------------ -->
+  
+    </div>
+     <!-- Carousel Navigation -->
+    <div class="arrows d-flex">
+       <div class="custom-next d-flex">
+          <i class="bx bx-chevrons-right swiper-icon"></i>
+        </div>
+        <div class="custom-prev d-flex">
+          <i class="bx bx-chevrons-left swiper-icon"></i>
+        </div>
+    </div>
+  </section>
+
+  <!------------------------------------------------------------------------------------------------------------------------------------->
+  <!-- adding footer file -->
+  <%- await include('components/footer.html')%>
+
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- adding meta file -->
+  <%- await include('components/meta.html')%>
+  <title>Perah Hashchunot</title>
+</head>
+
+<body>
+  <!-- adding header file -->
+  <%- await include('components/header.html')%>
+
+<!-----------------------------------------------------------------register login---------------------------------------------------------------->
+
+<div class="main promotion">
+    <div class="title">
+      <h2>Register\Log in</h2>
+    
+          <div class="hero">
+        <div class="form-box">
+            <div class="button-box">
+                <div id="btn"></div>
+
+                
+                <button type="button" class="toggle-btn" onclick="login()"> login </button>
+                <button type="button" class="toggle-btn" onclick="register()"> register </button>
+
+            </div>
+                <div class="social-icons">
+                 <%if(typeof message !=="undefined"){%><p><%=message%></p><%}%>
+                </div>
+            <form  id="login" method="POST" class="inputDit">
+               
+                <input type="email" class="input-field" placeholder="name@example.com" name="email" required value="<%=email%>">
+                <input type="password" class="input-field" placeholder="enter password" name="password" required>
+                <input type="checkbox" name="remember_me" class="checkbox"><span>remember me</span>
+                <button type="submit" class="submit-button" style="vertical-align:middle"><span>login</span></button>
+
+            </form>
+
+            <form  id="register" action="/register" method="POST" class="inputDit">
+                <input type="text" name="firstname" class="input-field" placeholder="first name" required pattern="[ A-Za-z]{1,50}" title="Enter valid name">
+                <input type="text" class="input-field" placeholder=" last name" name="lastname" required pattern="[ A-Za-z]{1,50}" title="Enter valid name">
+                <input type="email" class="input-field" placeholder="name@example.com" name="email">
+                <input type="password" class="input-field" placeholder="enter password" required name="password">
+                <button type="send" class="submit-button" style="vertical-align:middle"><span>register</span></button>
+
+            </form>
+
+        </div>
+        
+    </div>
+ <script>
+     var x= document.getElementById("login");
+     var y= document.getElementById("register");
+     var z= document.getElementById("btn");
+
+     function register(){
+         x.style.left=" -400px";
+        y.style.left=" 50px";
+        z.style.left=" 110px";
+     }
+
+     function login(){
+         x.style.left=" 50px";
+        y.style.left=" 450px";
+        z.style.left=" 0px";
+     }
+ </script>
+
+</div>    <!--title-->
+</div> 
+  
+
+  <!------------------------------------------------------------------------------------------------------------------------------------->
+  <!-- adding footer file -->
+  <%- await include('components/footer.html')%>
+
+</body>
+
+</html>

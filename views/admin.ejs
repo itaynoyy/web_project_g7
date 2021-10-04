@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- adding meta file -->
+  <%- await include('components/meta.html')%>
+  <title>Perah Hashchunot</title>
+</head>
+
+<body>
+  <!-- adding header file -->
+  <%- await include('components/header.html')%>
+
+<!-----------------------------------------------------------------register login---------------------------------------------------------------->
+
+<div class="main promotion">
+    <div class="title">
+      <h2>Add product\Add flower</h2>
+    
+          <div class="hero">
+        <div class="form-box">
+            <div class="button-box">
+                <div id="btn"></div>
+
+                
+                <button type="button" class="toggle-btn" onclick="login()"> Product </button>
+                <button type="button" class="toggle-btn" onclick="register()"> Flower </button>
+
+            </div>
+                <div class="social-icons">
+                 <%if(typeof message !=="undefined"){%><p><%=message%></p><%}%>
+                </div>
+            <form  id="login" action="/admin/product" method="POST" enctype="multipart/form-data" class="inputDit">
+               
+                <input type="text" class="input-field" placeholder="Enter name" name="name" required pattern="[ A-Za-z]{1,50}" title="Enter valid name">
+                <input type="number" class="input-field" placeholder="Enter price" name="price" required>
+                <input type="file" class="input-field" placeholder="Enter picture" name="picture" required>
+                <select class="input-field" placeholder="Enter type" name="type" required>
+                    <option>Flower pots</option>
+                    <option>Bouquets</option>
+                    <option>Flower crowns</option>
+
+                    <option>Table arrangements</option>
+                    <option>Bridal bouquet</option>
+                </select>
+                <textarea class="input-field" placeholder="Enter Details" name="description" required></textarea>
+                <button type="submit" class="submit-button" style="vertical-align:middle"><span>Create Product</span></button>
+
+            </form>
+
+            <form  id="register" action="/admin/flower" enctype="multipart/form-data" method="POST" class="inputDit">
+                <input type="text" class="input-field" placeholder="Enter name" name="name" required pattern="[ A-Za-z]{1,50}" title="Enter valid name">
+                <input type="file" class="input-field" placeholder="Enter picture" name="picture" required>
+                <textarea class="input-field" placeholder="Enter Details" name="description" required></textarea>
+                <button type="submit" class="submit-button" style="vertical-align:middle"><span>Create Flower</span></button>
+
+            </form>
+
+        </div>
+        
+    </div>
+ <script>
+     var x= document.getElementById("login");
+     var y= document.getElementById("register");
+     var z= document.getElementById("btn");
+
+     function register(){
+         x.style.left=" -400px";
+        y.style.left=" 50px";
+        z.style.left=" 110px";
+     }
+
+     function login(){
+         x.style.left=" 50px";
+        y.style.left=" 450px";
+        z.style.left=" 0px";
+     }
+ </script>
+
+</div>    <!--title-->
+</div> 
+  
+
+  <!------------------------------------------------------------------------------------------------------------------------------------->
+  <!-- adding footer file -->
+  <%- await include('components/footer.html')%>
+
+</body>
+
+</html>

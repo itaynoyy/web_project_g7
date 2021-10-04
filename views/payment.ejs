@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- adding meta file -->
+  <%- await include('components/meta.html')%>
+  <!-- Custom StyleSheet -->
+  <link rel="stylesheet" href="/css/paymentCSS.css" />
+  <title>Perah Hashchunot</title>
+</head>
+
+<body>
+
+  <!-- adding header file -->
+  <%- await include('components/header.html')%>
+<!-----------------------------------------------------------payment---------------------------------------------------------------------->
+<h2> payment form</h2>
+    <div class="row">
+        <div class="col-75">
+            <div class="cont">
+                <form method="POST">
+
+                    <div class="row">
+                        <div class="col-50">
+                            <h3> Billing Address</h3><br>
+                                <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+                                <input type="text" class="input-field" id="fname" name="name" value="<%=current_user.first_name%> <%=current_user.last_name%>" placeholder="John M. Doe" required pattern="[ A-Za-z]{1,50}" title="Enter valid name">
+                                <label for="email"><i class="fa fa-envelope"></i> Email</label>
+                                <input type="email" value="<%=current_user.email%>" class="input-field" id="email" name="email"  placeholder="john@example.com" required>
+                                <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+                                <input type="text" class="input-field" id="adr"  name="address" placeholder="542 W. 15th Street" required>
+                                <label for="adr"><i class="fa fa-address-card-o"></i> Phone</label>
+                                <input type="text" class="input-field" id="adr" value="<%=current_user.phone%>" name="phone" placeholder="05#-#######" required>
+                                <label for="adr"><i class="fa fa-address-card-o"></i> Additional Info</label>
+                                <input type="text"  class="input-field" id="adr" name="additional" placeholder="Extra details for order" required>
+                        </div>
+                        <div class="col-50">
+                            <h3> Payment</h3>
+                            <label for="fname">Accepted Cards</label>
+                            <div class="icon-container">
+                              <i class="fa fa-cc-visa" style="color:navy;"></i>
+                              <i class="fa fa-cc-amex" style="color:blue;"></i>
+                              <i class="fa fa-cc-mastercard" style="color:red;"></i>
+                              <i class="fa fa-cc-discover" style="color:orange;"></i>
+                            </div>
+                            <label for="cname"> Name on the card</label>
+                            <input type="text" class="input-field" id="cname" name="cardname" placeholder="John M. Doe" pattern="[ A-Za-z]{1,50}" title="Enter valid name">
+                            <label for="ccnum"> Cradit card number</label>
+                            <input type="text" class="input-field" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" pattern="[0-9]{12}" title="Enter valid card">
+                            <label for="expmonth">Exp Month</label>
+                            <input type="text"  class="input-field" id="expmonth" name="expmonth" placeholder="1-12" required pattern="[0-9]{1,2}" title="Enter valid Month">
+                            <div class="row">
+                                <div class="col-50">
+                                    <label for="expyear">Exp year</label>
+                                    <input type="text"  class="input-field-backCard" id="expyear" name="expyear" placeholder="2018" required pattern="[0-9]{4}" title="Enter valid Year">
+                                    <label for="cvv">CVV</label>
+                                <input type="text"  class="input-field-backCard" id="cvv" name="cvv" placeholder="352" required pattern="[0-9]{3}" title="Enter valid CVV">
+                                </div>
+                            
+                            </div>
+                        </div>
+
+                    </div>  <!---row-->
+
+                    <label>
+                        <input type="checkbox" checked="checked" name="sameade"> shipping address same as billing
+                    </label>
+                    <input type="submit" value="Continue to checkout" class="btnPayment">
+                   
+                </form>
+            </div>
+            </div>
+        </div>
+  <!------------------------------------------------------------------------------------------------------------------------------------->
+
+  <!-- adding footer file -->
+  <%- await include('components/footer.html')%>
+
+</body>
+
+</html>

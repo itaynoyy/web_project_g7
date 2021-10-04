@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- adding meta file -->
+  <%- await include('components/meta.html')%>
+  <title>Perah Hashchunot</title>
+</head>
+
+<body>
+  <%let total=0%>
+  <!-- adding header file -->
+  <%- await include('components/header.html')%>
+
+
+    <!--------------------------------------------------------------cart items------------------------------------------------------------------->
+ 
+    <div class="small-container cart-page">
+        <table>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Subtotal</th>
+  
+            </tr>
+            <%for(let i =0 ; i< cart[0].length; i++){%>
+            <tr>
+                <td>
+                    <div class="cart-info">
+                        <img src="/images/<%=cart[0][i].picture%>" alt="" />
+  
+                        <div>
+                            <h3><%=cart[0][i].name%></h3>
+                            <small>Price: ₪<%=cart[0][i].price%></small>
+                            <a href="/cart/delete/<%=cart[0][i].cart_id%>">Remove</a>
+                        </div>
+                    </div>
+                </td>
+                <td><input target="<%=cart[0][i].price%>" min="1" onchange="btn=this;fetch('/cart/update/'+btn.getAttribute('cart_id')+'?quantity='+btn.value).then(data=>data.json()).then((data)=>{document.getElementById('overall_total').innerText = parseInt(document.getElementById('overall_total').innerText) + data.quantity*parseInt(btn.getAttribute('target'))-parseInt(btn.parentElement.nextElementSibling.innerText);btn.parentElement.nextElementSibling.innerText=data.quantity*parseInt(btn.getAttribute('target'));btn.setAttribute('cart_id', data.cart_id);})" type="number" value="<%=cart[0][i].quantity%>" pattern="[1-90]" cart_id="<%=cart[0][i].cart_id%>"></td>
+                <td><%=cart[0][i].price*cart[0][i].total_count%></td>
+                <%total+=cart[0][i].price*cart[0][i].total_count%>
+            </tr>
+            <%}%>
+            <%for(let i =0 ; i< cart[1].length; i++){%>
+            <tr>
+                <td>
+                    <div class="cart-info">
+                        <img src="/images/<%=cart[1][i].flowers[0].picture%>" alt="" />
+  
+                        <div>
+                            <h3>Self Bouquet: <small><%for(let j = 0; j< cart[1][i].flowers.length; j++){%>
+                              <%=cart[1][i].flowers[j].name%>,
+                              <%}%></small></h3>
+                            <small>Price: ₪<%=cart[1][i].price%></small>
+                            <a href="/cart/delete/<%=cart[1][i].cart_id%>">Remove</a>
+                        </div>
+                    </div>
+                </td>
+                <td><input target="<%=cart[1][i].price%>" min="1" onchange="btn=this;fetch('/cart/update/'+btn.getAttribute('cart_id')+'?quantity='+btn.value).then(data=>data.json()).then((data)=>{document.getElementById('overall_total').innerText = parseInt(document.getElementById('overall_total').innerText) + data.quantity*parseInt(btn.getAttribute('target'))-parseInt(btn.parentElement.nextElementSibling.innerText);btn.parentElement.nextElementSibling.innerText=data.quantity*parseInt(btn.getAttribute('target'));btn.setAttribute('cart_id', data.cart_id);})" type="number" value="<%=cart[1][i].quantity%>" pattern="[1-90]" cart_id="<%=cart[1][i].cart_id%>"></td>
+                <td><%=cart[1][i].price*cart[1][i].total_count%></td>
+                <%total+=cart[1][i].price*cart[1][i].total_count%>
+            </tr>
+            <%}%>
+        </table>
+  
+          <div class="total-price">
+  
+              <table>
+                  <tr>
+                      <td>Subtotal</td>
+                      <td>₪<span id="overall_total"><%=total%></span></td>
+                  </tr>
+  
+              </table>
+          </div>
+          <%if(total!=0){%>
+          <div class="delivery-details">
+              <form method="POST" class="form1" action="">
+                <label for="firstName" class="first-name">Recipient's name</label>
+                <input id="firstName" name="name" type="text" required pattern="[ A-Za-z]{1,50}" title="Only alphabets allowed">
+  
+                <label for="Shipping Address" class="Shipping-Address">Shipping Address</label>
+                <input id="Shipping Address" name="address" type="text" required>
+  
+                <label for="Contact phone">Contact phone</label>
+                <input type="tel" id="Contact phone" name="phone" placeholder="0599999999" pattern="[0-9]{3}[0-9]{4}[0-9]{3}" required>
+  
+                <label for="datetime">delivery date</label>
+                <input type="datetime-local" id="datetime" name="date" required>
+  
+  
+                <label for="Dedication">Dedication</label>
+                <textarea name="dedication" id="Dedication" cols="30" rows="3" required></textarea>
+  
+                <button class="addToCart" style="vertical-align:middle"><span>Submit</span></button>
+  
+                
+            </form>
+          </div>
+          <%}%>
+        </div>
+  
+
+        <!------------------------------------------------------------------------------------------------------------------------------------->
+  <!-- adding footer file -->  
+  <%- await  include('components/footer.html') %>
+
+</body>
+
+</html>

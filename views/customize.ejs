@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- adding meta file -->
+  <%- await include('components/meta.html')%>
+  <title>Perah Hashchunot</title>
+</head>
+
+<body>
+  <!-- adding header file -->
+  <%- await include('components/header.html')%>
+
+    <!--------------------------------------------CUSTOMIZED------------------------------------------------------------------------------------->
+             <form method="POST">
+    <section class="section promotion">
+        <div class="header_products"><h1>Choose your favorite flowers</h1></div>
+        <div class="form-customized">
+                <div class="item">
+                    <label for="sort-by">Choose size</label>
+                    <select name="sort-by" id="sort-by">
+                      <option value="small" selected="selected">small 80₪</option>
+                      <option value="medium">medium 120₪</option>
+                      <option value="large">large 150₪</option>
+                    </select>
+                  </div>
+                <button class="button" style="vertical-align:middle"><span>Create your bouquet</span></button>
+        </div>
+
+        <div class="promotion-layout container">
+            <%for(let i=0; i < flowers.length; i++){%>
+            <div class="promotion-item">
+                <img src="/images/<%=flowers[i].picture%>" alt="" />
+                <div class="promotion-content">
+                    <h3><%=flowers[i].name%></h3>
+                    <a>ADD NOW</a>
+                    <label class="container">
+                        <input type="checkbox" name="selected[]" value="<%=flowers[i].id%>">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+            </div>
+            <%}%>
+        </div>
+    </section>
+    </form>
+
+    <!-- Carousel Navigation -->
+    <div class="arrows d-flex">
+        <div class="custom-next d-flex">
+            <i class="bx bx-chevrons-right swiper-icon"></i>
+        </div>
+        <div class="custom-prev d-flex">
+            <i class="bx bx-chevrons-left swiper-icon"></i>
+        </div>
+    </div>
+    </section>
+
+
+    <!------------------------------------------------------------------------------------------------------------------------------------->
+  <!-- adding footer file -->  
+  <%- await  include('components/footer.html') %>
+
+
+</body>
+
+</html>
